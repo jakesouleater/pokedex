@@ -161,17 +161,18 @@ function displayPokemonsDetails(pokemon) {
 
     document.querySelector("title").textContent = capitalizePokemonName;
 
-    const detailmainElement = document.querySelector("detail-main");
+    const detailmainElement = document.querySelector(".detail-main");
     detailmainElement.classList.add(name.toLowerCase());
 
-    document.querySelector("name-wrap .name").textContent = capitalizePokemonName;
+    document.querySelector(".name-wrap .name").textContent = capitalizePokemonName;
 
     document.querySelector(
         ".pokemon-id-wrap .body2-fonts"
     ).textContent = `#${String(id).padStart(3, "0")}`;
 
     const imageElement = document.querySelector(".detail-img-wrapper img");
-    imageElement.src = `https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/other/dream-world/${id}.svg`;
+    imageElement.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+    imageElement.alt =name;
     const typeWrapper = document.querySelector(".power-wrapper");
     typeWrapper.innerHTML = "";
     types.forEach(({ type }) => {
@@ -227,4 +228,15 @@ function displayPokemonsDetails(pokemon) {
     });
 
     setTypeBackgfgroundColor(pokemon);
+
+
+}
+function getEnglishFlavorText(pokemonSpecies) {
+    for (let entry of pokemonSpecies.flavor_text_entries) {
+        if (entry.language.name === "en") {
+            let flavor = entry.flavor_text.replace(/\f/g, "");
+            return flavor;
+        }
+    }
+    return "";
 }
