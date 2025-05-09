@@ -30,7 +30,7 @@ async function loadPokemon(id) {
         abilitiesWrapper.innerHTML = "";
 
         if (currentPokemonId === id) {
-            displayPokemonsDetails(pokemon);
+            displayPokemonDetails(pokemon);
             const flavorText = getEnglishFlavorText(pokemonSpecies);
             document.querySelector(".body3-font.pokemon-description").textContent =
                 flavorText;
