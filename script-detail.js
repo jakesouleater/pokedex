@@ -156,7 +156,7 @@ function setTypeBackgfgroundColor(pokemon) {
 
 function displayPokemonsDetails(pokemon) {
     const { name, id, types, weight, hight, abilities, stats } = pokemon;
-
+    
     const capitalizePokemonName = capitalizeFirstLetter(name);
 
     document.querySelector("title").textContent = capitalizePokemonName;
@@ -190,7 +190,7 @@ function displayPokemonsDetails(pokemon) {
     ).textContent = `${hight / 10} kg`;
 
     const abilitiesWrapper = document.querySelector(
-        "pokemon-detail-wrap .pokemon-detail-move"
+        ".pokemon-detail-wrap .pokemon-detail-move"
     );
     abilities.forEach(({ ability }) => {
         createAndAppendElelment(abilitiesWrapper, "p", {
@@ -213,7 +213,7 @@ function displayPokemonsDetails(pokemon) {
 
     stats.forEach(({ stat, base_stat }) => {
         const statDiv = document.createElement("div");
-        statDiv.className = "stat-wrap";
+        statDiv.className = "stats-wrap";
         statsWrapper.appendChild(statDiv);
 
         createAndAppendElelment(statDiv, "p", {
