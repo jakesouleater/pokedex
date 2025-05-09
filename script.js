@@ -19,12 +19,12 @@ async function fetchPokemonDataBeforeRedirect(id) {
         const [pokemon, pokemonSpecies] = await Promise.
             all([fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) =>
                 res.json()
-        ),
-        fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) =>
+            ),
+            fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) =>
                 res.json()
-        ),
-     ]);
-     return true
+            ),
+            ]);
+        return true
     } catch (error) {
         console.error("failed to fetch pokemon data before redirect");
     }
@@ -50,7 +50,7 @@ function displayPokemons(pokemon) {
         `;
 
         listItem.addEventListener("click", async () => {
-            const success  = await fetchPokemonDataBeforeRedirect(pokemonID);
+            const success = await fetchPokemonDataBeforeRedirect(pokemonID);
             if (success) {
                 window.location.href = `./detail.html?id=${pokemonID}`;
             }
@@ -60,28 +60,28 @@ function displayPokemons(pokemon) {
     });
 }
 
-    searchInput.addEventListener("keyup", handlesearch);
+searchInput.addEventListener("keyup", handlesearch);
 
-    function handlesearch() {
-        const searchTerm = searchInput.value.toLowerCase();
-        let filteredPokemons; 
-    
-        if(numberFilter.checked) {
-            filteredPokemons = allPokemons.filter((pokemon) => {
-                const pokemonID = pokemon.url.split("/")[6];
-                return pokemonID.startsWith(searchTerm);
-            });
-        } else if(nameFilter.checked) {
-            filteredPokemons = allPokemons.filter((pokemon) => {
-                return pokemon.name.toLowerCase().startsWith(searchTerm);
-            });
+function handlesearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    let filteredPokemons;
+
+    if (numberFilter.checked) {
+        filteredPokemons = allPokemons.filter((pokemon) => {
+            const pokemonID = pokemon.url.split("/")[6];
+            return pokemonID.startsWith(searchTerm);
+        });
+    } else if (nameFilter.checked) {
+        filteredPokemons = allPokemons.filter((pokemon) => {
+            return pokemon.name.toLowerCase().startsWith(searchTerm);
+        });
     } else {
-      filteredPokemons = allPokemons;
+        filteredPokemons = allPokemons;
     }
 
     displayPokemons(filteredPokemons);
 
-    if(filteredPokemons.length ===  0) {
+    if (filteredPokemons.length === 0) {
         notFoundMessage.style.display = "block";
     } else {
         notFoundMessage.style.display = "none";
