@@ -113,11 +113,11 @@ body {
   align-items: center;
 }
 
-.logo-wrapper > h1 {
+.logo-wrapper>h1 {
   color: var(--grayscale-white);
 }
 
-.logo-wrapper > img {
+.logo-wrapper>img {
   margin-right: 16px;
 }
 
@@ -146,7 +146,7 @@ body {
   fill: var(--identity-primary);
 }
 
-.search-wrap > input {
+.search-wrap>input {
   width: 60%;
   border: none;
 }
@@ -209,7 +209,7 @@ body {
   z-index: 2;
 }
 
-.filter-wrapper > .body2-fonts {
+.filter-wrapper>.body2-fonts {
   color: var(--grayscale-white);
   font-weight: var(--font-weight-bold);
   padding: 16px 20px;
@@ -222,14 +222,14 @@ body {
   border-radius: 8px;
 }
 
-.filter-wrap > div {
+.filter-wrap>div {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
 }
 
-.filter-wrap > div:last-child {
+.filter-wrap>div:last-child {
   margin-bottom: 0px;
 }
 
@@ -362,7 +362,7 @@ body {
   gap: 16px;
 }
 
-.power-wrapper > p {
+.power-wrapper>p {
   border-radius: 10px;
   padding: 2px 8px;
   font-weight: var(--font-weight-bold);
@@ -431,7 +431,7 @@ body {
   padding: 8px 5px;
 }
 
-.pokemon-detail-wrap > .caption-fonts {
+.pokemon-detail-wrap>.caption-fonts {
   color: var(--grayscale-medium);
 }
 

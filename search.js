@@ -14,28 +14,28 @@ sort_wrapper.addEventListener("click", () => {
 
 function handleInputChange(inputElement) {
     const inputValue = inputElement.value;
-    
-    if(inputValue !=="") {
+
+    if (inputValue !== "") {
         document
-        .querySelector("search-close-icon")
-        .classList.add("search-close-icon-visible");
-    } else{
+            .querySelector("search-close-icon")
+            .classList.add("search-close-icon-visible");
+    } else {
         document
-        .querySelector("search-close-icon")
-         .classList.remove("search-close-icon-visible");
+            .querySelector("search-close-icon")
+            .classList.remove("search-close-icon-visible");
     }
 }
 
 function handleSearchCloseOnClick() {
     document.querySelector("#search-input").value = "";
     document
-    .querySelector("#search-close-icon")
-    .classList.remove("search-close-icon-visible");
+        .querySelector("#search-close-icon")
+        .classList.remove("search-close-icon-visible");
 }
 
 function handleSortCloseOnClick() {
     document
-    .querySelector(".filter-wrapper")
-    .classList.toggle("filter-wraapper-open");
+        .querySelector(".filter-wrapper")
+        .classList.toggle("filter-wraapper-open");
     document.querySelector("body").classList.toggle("filter-wrapper-overlay");
 }
