@@ -45,7 +45,6 @@ async function loadPokemon(id) {
                 leftArrow.addEventListener("click", () => {
                     navigatePokemon(id - 1);
                 });
-            }
         }
         if (id !== 151) {
             rightArrow.addEventListener("click", () => {
@@ -85,12 +84,11 @@ const typeColors = {
     dragon: "#7038F8",
     dark: "#705848",
     steel: "#B8B8D0",
-    dark: "#EE99AC",
 };
 
-function setElemenStyles(elements, cssProperty, valule) {
+function setElementStyles(elements, cssProperty, value) {
     elements.forEach((element) => {
-        element.style[cssProperty] = valule;
+        element.style[cssProperty] = value;
     });
 }
 
@@ -102,29 +100,29 @@ function rgbaFromHex(hexColor) {
     ].join(", ");
 }
 
-function setTypeBackgfgroundColor(pokemon) {
+function setTypeBackgroundColor(pokemon) {
     const mainType = pokemon.types[0].type.name;
     const color = typeColors[mainType];
     if (!color) {
-        console.warn(`Color not definded for type: ${mainType}`);
+        console.warn(`Color not defined for type: ${mainType}`);
         return;
     }
-    const detailmainElement = document.querySelector(".detail-main");
-    setElemenStyles([detailmainElement], "backgroundcolor", color);
-    setElemenStyles([detailmainElement], "borderColor", color);
+    const detailMainElement = document.querySelector(".detail-main");
+    setElementStyles([detailMainElement], "backgroundColor", color);
+    setElementStyles([detailMainElement], "borderColor", color);
 
-    setElemenStyles(
+    setElementStyles(
         document.querySelectorAll(".power-wrapper > p"),
-        "backgroundcolor",
+        "backgroundColor",
         color
     );
-    setElemenStyles(
+    setElementStyles(
         document.querySelectorAll(".stats-wrap p.stats"),
         "color",
         color
     );
-    setElemenStyles(
-        document.querySelectorAll(".stats-wrap progress-bar"),
+    setElementStyles(
+        document.querySelectorAll(".stats-wrap .progress-bar"),
         "color",
         color
     );
@@ -136,27 +134,27 @@ function setTypeBackgfgroundColor(pokemon) {
         background-color: rgba(${rgbaColor}, 0.5);
         }
         .stats-wrap .progress-bar::-webkit-progress-value {
-        background-color: rgba(${color};
+        background-color: ${color};
         }
     `;
     document.head.appendChild(styleTag);
+}
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     }
 
-    function createAndAppendElelment(parent, tag, options = {}) {
+    function createAndAppendElement(parent, tag, options = {}) {
         const element = document.createElement(tag);
-        Object.kets(options).forEach((key) => {
+        Object.keys(options).forEach((key) => {
             element[key] = options[key];
-            parent.appendChild(element);
+            });
+        parent.appendChild(element);
             return element;
-        });
     }
 }
 
-function displayPokemonsDetails(pokemon) {
-    const { name, id, types, weight, hight, abilities, stats } = pokemon;
-    
+function displayPokemonDetails(pokemon) {
+    const { name, id, types, weight, height, abilities, stats } = pokemon;
     const capitalizePokemonName = capitalizeFirstLetter(name);
 
     document.querySelector("title").textContent = capitalizePokemonName;
@@ -176,30 +174,30 @@ function displayPokemonsDetails(pokemon) {
     const typeWrapper = document.querySelector(".power-wrapper");
     typeWrapper.innerHTML = "";
     types.forEach(({ type }) => {
-        createAndAppendElelment(typeWrapper, "p", {
+        createAndAppendElement(typeWrapper, "p", {
             className: `body3-fonts type ${type.name}`,
             textContent: type.name,
         });
     });
 
     document.querySelector(
-        ".pokemon-detail-wrap /pokemon-detail p.body3-fonts.weight"
-    ).textContent = `${weight / 10} kg`;
+        ".pokemon-detail-wrap .pokemon-detail p.body3-fonts.weight"
+    ).textContent = `${weight / 10}kg`;
     document.querySelector(
-        ".pokemon-detail-wrap /pokemon-detail p.body3-fonts.hight"
-    ).textContent = `${hight / 10} kg`;
+        ".pokemon-detail-wrap .pokemon-detail p.body3-fonts.height"
+    ).textContent = `${height / 10}m`;
 
     const abilitiesWrapper = document.querySelector(
         ".pokemon-detail-wrap .pokemon-detail-move"
     );
     abilities.forEach(({ ability }) => {
-        createAndAppendElelment(abilitiesWrapper, "p", {
+        createAndAppendElement(abilitiesWrapper, "p", {
             className: "body3-fonts",
             textContent: ability.name,
         });
     });
 
-    const statsWrapper = document.querySelector("stats-wrapper");
+    const statsWrapper = document.querySelector(".stats-wrapper");
     statsWrapper.innerHTML = "";
 
     const statNameMapping = {
@@ -216,18 +214,18 @@ function displayPokemonsDetails(pokemon) {
         statDiv.className = "stats-wrap";
         statsWrapper.appendChild(statDiv);
 
-        createAndAppendElelment(statDiv, "p", {
+        createAndAppendElement(statDiv, "p", {
             className: "body3-font",
             textContent: String(base_stat).padStart(3, "0"),
         });
-        createAndAppendElelment(statDiv, "p", {
+        createAndAppendElement(statDiv, "p", {
             className: "progress-bar",
             value: base_stat,
             max: 100,
         });
     });
 
-    setTypeBackgfgroundColor(pokemon);
+    setTypeBackgroundColor(pokemon);
 
 
 }
