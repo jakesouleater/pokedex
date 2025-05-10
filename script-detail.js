@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function loadPokemon(id) {
-    try {
-        const [pokemon, pokemonSpecies] = await Promise.all([
-            fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) =>
-                res.json()
-            ),
-            fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) =>
-                res.json()
-            ),
-        ]);
+  try {
+    const [pokemon, pokemonSpecies] = await Promise.all([
+      fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) =>
+        res.json()
+      ),
+      fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) =>
+        res.json()
+      ),
+    ]);
 
         const abilitiesWrapper = document.querySelector(
             ".pokemon-detail-wrap .pokemon-detail.move"
@@ -41,8 +41,7 @@ async function loadPokemon(id) {
         if (currentPokemonId === id) {
             displayPokemonDetails(pokemon);
             const flavorText = getEnglishFlavorText(pokemonSpecies);
-            document.querySelector(".body3-font.pokemon-description").textContent =
-                flavorText;
+            document.querySelector(".body3-fonts.pokemon-description").textContent = flavorText;
 
             const [leftArrow, rightArrow] = ["#leftArrow", "#rightArrow"].map((sel) =>
                 document.querySelector(sel)
