@@ -188,7 +188,7 @@ function displayPokemonDetails(pokemon) {
     ).textContent = `${height / 10}m`;
 
     const abilitiesWrapper = document.querySelector(
-        ".pokemon-detail-wrap .pokemon-detail-move"
+        ".pokemon-detail-wrap .pokemon-detail"
     );
     abilities.forEach(({ ability }) => {
         createAndAppendElement(abilitiesWrapper, "p", {
@@ -203,7 +203,7 @@ function displayPokemonDetails(pokemon) {
     const statNameMapping = {
         hp: "HP",
         attack: "ATK",
-        defence: "HP",
+        defence: "DEF",
         "special-attack": "SATK",
         "special-defence": "SDEF",
         speed: "SPD",
